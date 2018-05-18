@@ -6,7 +6,7 @@
 #    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/04 17:08:23 by agrumbac          #+#    #+#              #
-#    Updated: 2018/05/17 18:16:33 by agrumbac         ###   ########.fr        #
+#    Updated: 2018/05/18 05:16:25 by agrumbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ NAME = libfts.a
 
 SRC = ft_bzero.s ft_isalpha.s ft_isdigit.s ft_isascii.s ft_isprint.s \
 	ft_isalnum.s ft_tolower.s ft_toupper.s ft_strcat.s ft_strlen.s ft_puts.s \
-	ft_memset.s ft_memcpy.s ft_strdup.s ft_cat.s
+	ft_memset.s ft_memcpy.s ft_strdup.s ft_cat.s \
+	ft_putchar.s
 
 OBJDIR = objs
 
@@ -67,7 +68,8 @@ ${OBJDIR}/%.o : ./srcs/%.s
 
 ############################## GENERAL RULES ###################################
 
-#@${CC} ${CFLAGS}  -L. -lfts test/test.c
+ctest: all
+	@${CC} ${CFLAGS} -L. -lfts test/test.c
 
 test: art
 	@/bin/mkdir -p ${OBJDIR}

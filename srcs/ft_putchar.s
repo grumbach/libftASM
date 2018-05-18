@@ -1,36 +1,34 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_isalpha.s                                       :+:      :+:    :+:    ;
+;    ft_putchar.s                                       :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2018/05/18 04:07:59 by agrumbac          #+#    #+#              ;
-;    Updated: 2018/05/18 06:24:04 by agrumbac         ###   ########.fr        ;
+;    Created: 2018/05/18 04:48:30 by agrumbac          #+#    #+#              ;
+;    Updated: 2018/05/18 05:22:31 by agrumbac         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-section .text
-	global _ft_isalpha
+%define MACH_SYSCALL(n)    0x2000000 | n
+%define WRITE              4
+%define STDOUT             1
 
-_ft_isalpha:
-	push rbp
+section .text
+	global _ft_putchar
+
+_ft_putchar:
+	push rbp               ;build stack frame
 	mov rbp, rsp
 
-	mov rax, 0
+	push rdi
+	lea rsi, [rsp]
+	mov rdi, STDOUT
+	mov rdx, 1
+	mov rax, MACH_SYSCALL(WRITE)
+	syscall
 
-	cmp rdi, 65
-	jl _is_not_alpha
-	cmp rdi, 91
-	jl _is_alpha
+	mov rsp, rbp          ;reset stack frame
+	pop rbp
 
-	cmp rdi, 97
-	jl _is_not_alpha
-	cmp rdi, 122
-	jg _is_not_alpha
-
-_is_alpha:
-	mov rax, 1
-_is_not_alpha:
-	leave
 	ret

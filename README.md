@@ -18,7 +18,6 @@ hello:
 section .text
 	global start
 	global _main
-	extern _printf
 
 ;//nasm entry point
 start:
@@ -64,6 +63,7 @@ instruction destination_operand, source_operand, last_operand
 |```pop```  |Pops **value** off the stack into a register and automatically increments ```esp``` by **sizeof(value)**|
 |```syscall``` |Does wicked Kernel Magic|
 |```call``` |Pushes ```eip``` onto the stack and jumps to the ```destination_operand```|
+|```leave``` |Releases the current stack frame. Moves ```rbp``` to ```rsp``` and pops ```rbp``` from the stack|
 |```ret``` |Pops the ```eip``` saved by ```call``` back in ```eip```|
 |```mov```|Move the value of the ```source operand``` in ```destination operand```|
 |```lea```|Load Effective Address of the ```source operand``` in the ```destination operand```. The ```source operand``` is a memory address (offset part) specified with one of the processors addressing modes, the ```destination operand``` is a general-purpose register|
@@ -76,10 +76,10 @@ instruction destination_operand, source_operand, last_operand
 There are times when we need to assist assembler in translating references to data in memory. When the instruction has no reference to operand size one must use a pointer directive.
 
 ```js
-mov     BYTE PTR  [ al], 42  ; Store 8-bit   (1 byte)  value
-mov     WORD PTR  [ ax], 42  ; Store 16-bit  (2 bytes) value
-mov     DWORD PTR [eax], 42  ; Store 32-bit  (4 bytes) value
-mov     QWORD PTR [rax], 42  ; Store 64-bit  (8 bytes) value
+mov     BYTE  [ al], 42  ; Store 8-bit   (1 byte)  value
+mov     WORD  [ ax], 42  ; Store 16-bit  (2 bytes) value
+mov     DWORD [eax], 42  ; Store 32-bit  (4 bytes) value
+mov     QWORD [rax], 42  ; Store 64-bit  (8 bytes) value
 ```
 
 ## Passing function arguments
