@@ -6,7 +6,7 @@
 #    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/04 17:08:23 by agrumbac          #+#    #+#              #
-#    Updated: 2018/05/15 19:57:02 by agrumbac         ###   ########.fr        #
+#    Updated: 2018/05/17 18:16:33 by agrumbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,11 @@ OBJ = $(addprefix ${OBJDIR}/, $(SRC:.s=.o))
 
 AS = ~/homebrew/bin/nasm
 
-ASFLAGS = -f macho64 -g# -fsanitize=address,undefined
+ASFLAGS = -f macho64 -g
 
-# LDFLAGS = -macosx_version_min 10.8 -lSystem
+CC = clang
+
+CFLAGS = -Wall -Wextra -fsanitize=address,undefined -g
 
 ############################## COLORS ##########################################
 
@@ -48,9 +50,9 @@ X = "\033[0m"
 UP = "\033[A"
 CUT = "\033[K"
 
-############################## RULES ###########################################
+############################## LIBASM ##########################################
 
-all: ${NAME}
+all: art ${NAME}
 	@echo ${G}Success"   "[${NAME}]${X}
 
 ${NAME}: ${OBJ}
@@ -63,7 +65,14 @@ ${OBJDIR}/%.o : ./srcs/%.s
 	@${AS} ${ASFLAGS} -o $@ $<
 	@printf ${UP}${CUT}
 
-############################## GENERAL #########################################
+############################## GENERAL RULES ###################################
+
+#@${CC} ${CFLAGS}  -L. -lfts test/test.c
+
+test: art
+	@/bin/mkdir -p ${OBJDIR}
+	@${AS} ${ASFLAGS} test/test.s -o ${OBJDIR}/test.o
+	@ld ${OBJDIR}/test.o -macosx_version_min 10.8 -lSystem
 
 clean:
 	@echo ${R}Cleaning"  "[${OBJDIR}]...${X}
