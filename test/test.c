@@ -6,13 +6,18 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 17:50:29 by agrumbac          #+#    #+#             */
-/*   Updated: 2018/05/18 07:37:54 by agrumbac         ###   ########.fr       */
+/*   Updated: 2018/05/18 10:44:31 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
+char			*ft_strdup(const char *s);
+char			*ft_strcat(char *restrict s1, const char *restrict s2);
+void			*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
+void				ft_memset(void *a, int c, unsigned long int len);
+void				ft_bzero(void *a, unsigned long int len);
 int					ft_toupper(int a);
 int					ft_tolower(int a);
 unsigned long int	ft_strlen(const char *b);
@@ -26,26 +31,67 @@ int					ft_puts(char *s);
 
 char *a = "qwertyuiopasdfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigy42";
 
+char z[7] = "hellow";
+char x[100];
+char tu[7] = "\0\0\0\0\0\0";
+char cato[100];
+char *me_strcat[3] = {"", "123", " it works!!"};
+
 int					main(void)
 {
+	char *dup;
+	x[99] = 0;
+	cato[0] = 0;
+
 //ft_cat.s
-//ft_strcat.s
 //ft_strdup.s
+printf("ft_strdup\n");
+	printf("  ft_strdup(\"%s\") = %s\n",me_strcat[0] , (dup = ft_strdup(me_strcat[0])));
+	free(dup);
+	printf("  ft_strdup(\"%s\") = %s\n",me_strcat[1] , (dup = ft_strdup(me_strcat[1])));
+	free(dup);
+	printf("  ft_strdup(\"%s\") = %s\n",me_strcat[2] , (dup = ft_strdup(me_strcat[2])));
+	free(dup);
+//ft_strcat.s
+printf("ft_strcat\n");
+	ft_strcat(cato, me_strcat[0]);
+	printf("  ft_strcat(cato, me_strcat[0]) -> cato [%c][%c][%c][%c][%c][%c][%c]\n", cato[0], cato[1], cato[2], cato[3], cato[4], cato[5], cato[6]);
+	ft_strcat(cato, me_strcat[1]);
+	printf("  ft_strcat(cato, me_strcat[1]) -> cato [%c][%c][%c][%c][%c][%c][%c]\n", cato[0], cato[1], cato[2], cato[3], cato[4], cato[5], cato[6]);
+	ft_strcat(cato, me_strcat[2]);
+	printf("  ft_strcat(cato, me_strcat[2]) -> cato {%s}\n", cato);
 //ft_memcpy.s
+printf("ft_memcpy\n");
+	ft_memcpy(tu, z, 0);
+	printf("  ft_memcpy(tu, z, 0) -> tu [%c][%c][%c][%c][%c][%c][%c]\n", tu[0], tu[1], tu[2], tu[3], tu[4], tu[5], tu[6]);
+	ft_memcpy(tu, z, 3);
+	printf("  ft_memcpy(tu, z, 3) -> tu [%c][%c][%c][%c][%c][%c][%c]\n", tu[0], tu[1], tu[2], tu[3], tu[4], tu[5], tu[6]);
+	ft_memcpy(tu, z, 7);
+	printf("  ft_memcpy(tu, z, 7) -> tu [%c][%c][%c][%c][%c][%c][%c]\n", tu[0], tu[1], tu[2], tu[3], tu[4], tu[5], tu[6]);
 //ft_memset.s
+printf("ft_memset\n");
+	ft_memset(z, 42, 0);
+	printf("  ft_memset(\"hellow\", 42, 0) -> [%c][%c][%c][%c][%c][%c][%c]\n", z[0], z[1], z[2], z[3], z[4], z[5], z[6]);
+	ft_memset(x, 42, 99);
+	printf("  ft_memset(x, 42, 99) -> %s (of length %lu)\n", x, ft_strlen(x));
 //ft_bzero.s
+printf("ft_bzero\n");
+	ft_bzero(z, 0);
+	printf("  ft_bzero(\"hellow\", 0) -> [%c][%c][%c][%c][%c][%c][%c]\n", z[0], z[1], z[2], z[3], z[4], z[5], z[6]);
+	ft_bzero(z, 3);
+	printf("  ft_bzero(\"hellow\", 3) -> [%c] [%c] [%c] [%c][%c][%c][%c]\n", z[0], z[1], z[2], z[3], z[4], z[5], z[6]);
 //ft_tolower.s
 printf("ft_tolower\n");
-	printf("ft_tolower('%c') -> [%c]\n", '*', ft_tolower('*'));
-	printf("ft_tolower('%c') -> [%c]\n", 'A', ft_tolower('A'));
-	printf("ft_tolower('%c') -> [%c]\n", 'a', ft_tolower('a'));
-	printf("ft_tolower('%c') -> [%c]\n", 'Q', ft_tolower('Q'));
+	printf("  ft_tolower('%c') -> [%c]\n", '*', ft_tolower('*'));
+	printf("  ft_tolower('%c') -> [%c]\n", 'A', ft_tolower('A'));
+	printf("  ft_tolower('%c') -> [%c]\n", 'a', ft_tolower('a'));
+	printf("  ft_tolower('%c') -> [%c]\n", 'Q', ft_tolower('Q'));
 //ft_toupper.s
 printf("ft_toupper\n");
-	printf("ft_toupper('%c') -> [%c]\n", '*', ft_toupper('*'));
-	printf("ft_toupper('%c') -> [%c]\n", 'A', ft_toupper('A'));
-	printf("ft_toupper('%c') -> [%c]\n", 'a', ft_toupper('a'));
-	printf("ft_toupper('%c') -> [%c]\n", 'q', ft_toupper('q'));
+	printf("  ft_toupper('%c') -> [%c]\n", '*', ft_toupper('*'));
+	printf("  ft_toupper('%c') -> [%c]\n", 'A', ft_toupper('A'));
+	printf("  ft_toupper('%c') -> [%c]\n", 'a', ft_toupper('a'));
+	printf("  ft_toupper('%c') -> [%c]\n", 'q', ft_toupper('q'));
 //ft_strlen.s
 printf("ft_strlen\n");
 	printf("  ft_strlen(\"%s\") -> [%lu]\n", "", ft_strlen(""));
