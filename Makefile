@@ -6,7 +6,7 @@
 #    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/04 17:08:23 by agrumbac          #+#    #+#              #
-#    Updated: 2018/05/18 05:16:25 by agrumbac         ###   ########.fr        #
+#    Updated: 2018/05/19 13:05:27 by agrumbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ NAME = libfts.a
 SRC = ft_bzero.s ft_isalpha.s ft_isdigit.s ft_isascii.s ft_isprint.s \
 	ft_isalnum.s ft_tolower.s ft_toupper.s ft_strcat.s ft_strlen.s ft_puts.s \
 	ft_memset.s ft_memcpy.s ft_strdup.s ft_cat.s \
-	ft_putchar.s
+	ft_putchar.s ft_putstr.s \
+	ft_memalloc.s ft_strchr.s ft_strncmp.s ft_strncpy.s \
+	ft_atoll.s ft_atoi.s
 
 OBJDIR = objs
 
@@ -74,7 +76,7 @@ ctest: all
 test: art
 	@/bin/mkdir -p ${OBJDIR}
 	@${AS} ${ASFLAGS} test/test.s -o ${OBJDIR}/test.o
-	@ld ${OBJDIR}/test.o -macosx_version_min 10.8 -lSystem
+	@ld ${OBJDIR}/test.o -macosx_version_min 10.8 -lSystem -L. -lfts
 
 clean:
 	@echo ${R}Cleaning"  "[${OBJDIR}]...${X}

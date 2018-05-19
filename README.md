@@ -21,7 +21,7 @@ section .text
 
 ;//nasm entry point
 start:
-	call _main                    ;//backup instruction pointer EIP jump to _main
+	call _main                    ;//backup instruction pointer RIP jump to _main
 	ret
 
 ;//default entry point
@@ -35,7 +35,7 @@ _main:
 	mov rax, MACH_SYSCALL(WRITE)  ;//RAX holds the syscall number
 	syscall
 	leave                         ;//set RSP to RBP, then pop RBP (pushed above)
-	ret                           ;//pop EIP (pushed above in call)
+	ret                           ;//pop RIP (pushed above in call)
 ```
 ## X86 Assembly
 
@@ -59,15 +59,15 @@ instruction destination_operand, source_operand, last_operand
 |Instruction|Black Sheep Wall|
 |-----------|---------|
 |```NOP```  |The one-byte NOP instruction is commonly used to align memory to speed-up jump as it is faster to jump using powers of 2|
-|```push``` |Pushes an immediate (numeric constant) or the **value** contained in a register onto the Stack and automatically decrements ```esp``` by **sizeof(value)**|
-|```pop```  |Pops **value** off the stack into a register and automatically increments ```esp``` by **sizeof(value)**|
+|```push``` |Pushes an immediate (numeric constant) or the **value** contained in a register onto the Stack and automatically decrements ```rsp``` by **sizeof(value)**|
+|```pop```  |Pops **value** off the stack into a register and automatically increments ```rsp``` by **sizeof(value)**|
 |```syscall``` |Does wicked Kernel Magic|
-|```call``` |Pushes ```eip``` onto the stack and jumps to the ```destination_operand```|
+|```call``` |Pushes ```rip``` onto the stack and jumps to the ```destination_operand```|
 |```leave``` |Releases the current stack frame. Moves ```rbp``` to ```rsp``` and pops ```rbp``` from the stack|
-|```ret``` |Pops the ```eip``` saved by ```call``` back in ```eip```|
+|```ret``` |Pops the ```rip``` saved by ```call``` back in ```rip```|
 |```mov```|Move the value of the ```source operand``` in ```destination operand```|
 |```lea```|Load Effective Address of the ```source operand``` in the ```destination operand```. The ```source operand``` is a memory address (offset part) specified with one of the processors addressing modes, the ```destination operand``` is a general-purpose register|
-|```jump```|Loads the ```destination operand``` in ```eip```, the ```destination operand``` specifies the address of the instruction being jumped to. This operand can be an immediate value, a general-purpose register, or a memory location|
+|```jump```|Loads the ```destination operand``` in ```rip```, the ```destination operand``` specifies the address of the instruction being jumped to. This operand can be an immediate value, a general-purpose register, or a memory location|
 |```and``` |Performs the following operation: ```destination operand = destination operand & source operand``` and sets some flags|
 |```test```|Is basically an ```and``` instruction that does not alter the ```destination operand```|
 
