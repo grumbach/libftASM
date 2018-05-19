@@ -43,10 +43,11 @@ _main:
 
 ![General-Purpose Registers](./literature/registers.png)
 
-* **volatile registers :** values can change after calling a procedure -- (```rax```, ```rcx```, ```rdx```)
+**Some registers values are preserved across function calls !**
 
-
-* **non-volatile registers :** values won't change after calling a procedure --  (```rbp```, ```rbx```, ```rsi```, ```rdi```)
+|**Preserved Registers**|```rbx```| ```rsp```| ```rbp```| ```r12```| ```r13```| ```r14```| ```r15```|
+|-|-|-|-|-|-|-|-|-|-|
+| **Scratch Registers** | ```rax```| ```rdi```| ```rsi```| ```rdx```| ```rcx```| ```r8```| ```r9```| ```r10```| ```r11```|
 
 
 ### Noteworthy Instructions
@@ -93,7 +94,7 @@ User-level applications use as integer registers for passing the sequence ```rdi
 |```rdi```  |```rsi```|```rdx```|```rcx```|```r8 ```|```r9 ```|
 
 * An user-space call is done via the ```call``` instruction.
-* If more params are passed they are **stored on the Stack**.
+* If more params are passed they are **stored on the Stack in reverse order**
 * The register ```rax``` contains the result of the called procedure.
 
 ### Kernel space ```syscall```
@@ -115,6 +116,7 @@ The kernel interface uses ```rdi```, ```rsi```, ```rdx```, ```r10```, ```r8``` a
 ## Want More ?
 
 * About [Calling conventions](https://stackoverflow.com/questions/2535989/what-are-the-calling-conventions-for-unix-linux-system-calls-on-i386-and-x86-6)
+* Or the [System V ABI](https://wiki.osdev.org/System_V_ABI)
 * [List of x86 instructions](https://c9x.me/x86/)
 * All the [XNU syscalls](https://opensource.apple.com/source/xnu/xnu-1504.3.12/bsd/kern/syscalls.master)
 * More on [X86_Architecture](https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture)

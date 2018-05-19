@@ -6,7 +6,7 @@
 ;    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/05/18 07:06:16 by agrumbac          #+#    #+#              ;
-;    Updated: 2018/05/18 10:46:39 by agrumbac         ###   ########.fr        ;
+;    Updated: 2018/05/19 16:41:38 by agrumbac         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -16,46 +16,29 @@ section .text
 	extern _ft_memcpy
 	extern _malloc
 
-_failure:
-	add rsp, 16
-	pop rdi
-	pop rsi
-
-	mov rax, 0
-
-	leave
-	ret
-
-
 _ft_strdup:
 	push rbp
 	mov rbp, rsp
-
-	push rsi
-	push rdi
 
 	call _ft_strlen
 
 	inc rax
 	push rax
-	sub rsp, 8              ;padding for 16-bit alignment
+	push rdi
 
 	mov rdi, rax
 	call _malloc
 
-	test rax, rax
-	jz _failure
+	pop rsi                 ;source
+	pop rdx                 ;len
 
-	add rsp, 8              ;remove padding
-	pop rdx
+	test rax, rax           ;test malloc return
+	jz _return
 
 	mov rdi, rax
-	mov rsi, [rsp]
 
 	call _ft_memcpy
 
-	pop rdi
-	pop rsi
-
+_return:
 	leave
 	ret

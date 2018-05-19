@@ -6,7 +6,7 @@
 ;    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/05/18 05:23:30 by agrumbac          #+#    #+#              ;
-;    Updated: 2018/05/18 05:56:53 by agrumbac         ###   ########.fr        ;
+;    Updated: 2018/05/19 15:53:24 by agrumbac         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -40,7 +40,7 @@ _ft_puts:
 	mov rdx, rax
 	mov rsi, rdi
 
-_write_syscall
+_write_syscall:
 	mov rdi, STDOUT
 	mov rax, MACH_SYSCALL(WRITE)
 	syscall

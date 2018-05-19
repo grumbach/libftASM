@@ -6,7 +6,7 @@
 ;    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/05/18 07:06:34 by agrumbac          #+#    #+#              ;
-;    Updated: 2018/05/19 13:17:00 by agrumbac         ###   ########.fr        ;
+;    Updated: 2018/05/19 17:09:17 by agrumbac         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -22,19 +22,22 @@ _ft_cat:
 	push rbp
 	mov rbp, rsp                        ;setup stack frame
 
-	push rdi                            ;backup rdi (non-volatile)
-	push rsi                            ;backup rsi (non-volatile)
+	push rbx                            ;backup preserved register
+	sub rsp, 8                          ;16bit align stack
+
 	sub rsp, BUF_SIZE                   ;make a big stack buffer
+
+	mov rbx, rdi                        ;store fd
 
 _loop:
 
-	mov rdi, [rbp - 8]                  ;fd
+	mov rdi, rbx                        ;fd
 	mov rsi, rsp                        ;buffer
-	mov rdx, BUF_SIZE - 1               ;
+	mov rdx, BUF_SIZE - 1               ;read size
 	mov rax, MACH_SYSCALL(READ)         ;call read
 	syscall
 
-	cmp rax, 0                          ;check for err or EOF TODO check msb neg
+	cmp rax, 0                          ;check for err or EOF
 	jle _break
 
 	mov rdx, rsp
@@ -49,8 +52,8 @@ _loop:
 _break:
 
 	add rsp, BUF_SIZE                   ;destroy big stack buffer
-	pop rsi                             ;restore rsi
-	pop rdi                             ;restore rdi
+	add rsp, 8
+	pop rbx                             ;restore rbx
 
 	leave                               ;destroy stack frame
 	ret
