@@ -45,7 +45,7 @@ _main:
 
 **Some registers values are preserved across function calls !**
 
-|**Preserved Registers**|```rbx```| ```rsp```| ```rbp```| ```r12```| ```r13```| ```r14```| ```r15```|
+|**Preserved Registers**|```rbx```| ```rsp```| ```rbp```| ```r12```| ```r13```| ```r14```| ```r15```| | |
 |-|-|-|-|-|-|-|-|-|-|
 | **Scratch Registers** | ```rax```| ```rdi```| ```rsi```| ```rdx```| ```rcx```| ```r8```| ```r9```| ```r10```| ```r11```|
 

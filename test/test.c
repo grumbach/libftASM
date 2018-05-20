@@ -6,13 +6,19 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 17:50:29 by agrumbac          #+#    #+#             */
-/*   Updated: 2018/05/20 00:51:41 by agrumbac         ###   ########.fr       */
+/*   Updated: 2018/05/20 21:20:41 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
- #include <fcntl.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <unistd.h>
 
+long long           ft_atoll(const char *str);
+int                 ft_atoi(const char *str);
+char                *ft_strncpy(char * dst, const char * src, size_t len);
+int                 ft_strncmp(const char *s1, const char *s2, size_t n);
 char                *ft_strchr(char *s, char a);
 void				*ft_memalloc(const unsigned long int len);
 void				ft_cat(const int fd);
@@ -216,5 +222,33 @@ printf("ft_strchr\n");
     printf("  ft_strchr 0 -> [%s]\n", ft_strchr("", 'a'));
     printf("  ft_strchr '' -> [%s]\n", ft_strchr("", 0));
     printf("  ft_strchr good day! -> [%s]\n", ft_strchr("hello my man! good day!", 'g'));
+//ft_atoll
+printf("ft_atoll\n");
+	printf("  ft_atoll( -42) -> %lld\n", ft_atoll(" -42"));
+	printf("  ft_atoll( -2147483648) -> %lld\n", ft_atoll(" -2147483648"));
+	printf("  ft_atoll( 2147483647) -> %lld\n", ft_atoll(" 2147483647"));
+	printf("  ft_atoll( 9223372036854775807) -> %lld\n", ft_atoll(" 9223372036854775807"));
+	printf("  ft_atoll( -9223372036854775808) -> %lld\n", ft_atoll(" -9223372036854775808"));
+	printf("  ft_atoll() -> %lld\n", ft_atoll(""));
+	printf("  ft_atoll(  42) -> %lld\n", ft_atoll("  42"));
+	printf("  ft_atoll(12s) -> %lld\n", ft_atoll("12s"));
+	printf("  ft_atoll(-65498765465465465414234523132515ll) -> %lld (real %lld)\n", ft_atoll("  -65498765465465465414234523132515ll"), atoll("  -65498765465465465414234523132515ll"));
+	printf("  ft_atoll(        +42) -> %lld\n", ft_atoll("  \t\n\v\r\f\n \n\v\r\f\n \n\v\r\f\n  +42"));
+	printf("  ft_atoll(merde) -> %lld\n", ft_atoll("merde"));
+//ft_atoi
+printf("ft_atoi\n");
+	printf("  ft_atoi( -42) -> %d\n", ft_atoi(" -42"));
+	printf("  ft_atoi( -2147483648) -> %d\n", ft_atoi(" -2147483648"));
+	printf("  ft_atoi( 2147483647) -> %d\n", ft_atoi(" 2147483647"));
+	printf("  ft_atoi( 9223372036854775807) -> %d\n", ft_atoi(" 9223372036854775807"));
+	printf("  ft_atoi( -9223372036854775808) -> %d\n", ft_atoi(" -9223372036854775808"));
+	printf("  ft_atoi() -> %d\n", ft_atoi(""));
+	printf("  ft_atoi(  42) -> %d\n", ft_atoi("  42"));
+	printf("  ft_atoi(12s) -> %d\n", ft_atoi("12s"));
+	printf("  ft_atoi(-65498765465465465414234523132515ll) -> %d (real %d)\n", ft_atoi("  -65498765465465465414234523132515ll"), atoi("  -65498765465465465414234523132515ll"));
+	printf("  ft_atoi(        +42) -> %d\n", ft_atoi("  \t\n\v\r\f\n \n\v\r\f\n \n\v\r\f\n  +42"));
+	printf("  ft_atoi(merde) -> %d\n", ft_atoi("merde"));
+
+
 	return (0);
 }
