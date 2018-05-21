@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 17:50:29 by agrumbac          #+#    #+#             */
-/*   Updated: 2018/05/20 21:20:41 by agrumbac         ###   ########.fr       */
+/*   Updated: 2018/05/20 21:24:04 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,6 +238,7 @@ printf("ft_atoll\n");
 //ft_atoi
 printf("ft_atoi\n");
 	printf("  ft_atoi( -42) -> %d\n", ft_atoi(" -42"));
+	printf("  ft_atoi( ,-42) -> %d\n", ft_atoi(" ,-42"));
 	printf("  ft_atoi( -2147483648) -> %d\n", ft_atoi(" -2147483648"));
 	printf("  ft_atoi( 2147483647) -> %d\n", ft_atoi(" 2147483647"));
 	printf("  ft_atoi( 9223372036854775807) -> %d\n", ft_atoi(" 9223372036854775807"));

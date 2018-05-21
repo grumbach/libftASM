@@ -6,7 +6,7 @@
 ;    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/05/18 06:29:15 by agrumbac          #+#    #+#              ;
-;    Updated: 2018/05/18 06:57:34 by agrumbac         ###   ########.fr        ;
+;    Updated: 2018/05/20 21:49:53 by agrumbac         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -26,6 +26,6 @@ _ft_isalnum:
 
 	call _ft_isalpha
 
-_return
+_return:
 	leave
 	ret

@@ -6,17 +6,18 @@
 ;    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/05/18 07:06:34 by agrumbac          #+#    #+#              ;
-;    Updated: 2018/05/19 17:09:17 by agrumbac         ###   ########.fr        ;
+;    Updated: 2018/05/21 18:46:27 by agrumbac         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
 %define MACH_SYSCALL(n)    0x2000000 | n
 %define READ               3
+%define WRITE              4
+%define STDOUT             1
 %define BUF_SIZE           1024
 
 section .text
 	global _ft_cat
-	extern _ft_putstr
 
 _ft_cat:
 	push rbp
@@ -27,7 +28,7 @@ _ft_cat:
 
 	sub rsp, BUF_SIZE                   ;make a big stack buffer
 
-	mov rbx, rdi                        ;store fd
+	mov rbx, rdi                        ;store fd in a preserved register
 
 _loop:
 
@@ -37,15 +38,16 @@ _loop:
 	mov rax, MACH_SYSCALL(READ)         ;call read
 	syscall
 
-	cmp rax, 0                          ;check for err or EOF
+	jc _break                           ;quit if read set carry (error)
+	cmp rax, 0                          ;check for EOF
 	jle _break
 
-	mov rdx, rsp
-	add rdx, rax
-	mov BYTE [rdx], 0                   ;null terminate buffer
 
-	mov rdi, rsp                        ;puts buffer
-	call _ft_putstr
+	mov rdi, STDOUT
+	mov rsi, rsp                         ;buffer on stack
+	mov rdx, rax                         ;length returned by read
+	mov rax, MACH_SYSCALL(WRITE)         ;call write
+	syscall
 
 	jmp _loop
 

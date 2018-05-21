@@ -6,7 +6,7 @@
 ;    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/05/18 07:06:10 by agrumbac          #+#    #+#              ;
-;    Updated: 2018/05/18 07:37:02 by agrumbac         ###   ########.fr        ;
+;    Updated: 2018/05/20 21:48:59 by agrumbac         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -21,7 +21,7 @@ _ft_tolower:
 
 	cmp rdi, 65
 	jl _is_not_upper
-	cmp rdi, 91
+	cmp rdi, 90
 	jg _is_not_upper
 
 	add rax, 32

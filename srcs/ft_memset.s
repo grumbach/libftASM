@@ -6,7 +6,7 @@
 ;    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/05/18 07:06:26 by agrumbac          #+#    #+#              ;
-;    Updated: 2018/05/18 08:31:37 by agrumbac         ###   ########.fr        ;
+;    Updated: 2018/05/20 21:47:28 by agrumbac         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -28,6 +28,8 @@ _do:
 _loop:
 	test rdx, rdx
 	jnz _do
+
+	mov rax, rdi
 
 	leave
 	ret
