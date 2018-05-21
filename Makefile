@@ -6,7 +6,7 @@
 #    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/04 17:08:23 by agrumbac          #+#    #+#              #
-#    Updated: 2018/05/19 13:05:27 by agrumbac         ###   ########.fr        #
+#    Updated: 2018/05/21 22:31:50 by agrumbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ ${OBJDIR}/%.o : ./srcs/%.s
 ############################## GENERAL RULES ###################################
 
 ctest: all
-	@${CC} ${CFLAGS} -L. -lfts test/test.c
+	@${CC} ${CFLAGS} -L. -lfts -Iincludes test/test.c
 
 test: art
 	@/bin/mkdir -p ${OBJDIR}

@@ -6,7 +6,7 @@
 ;    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/05/18 05:23:30 by agrumbac          #+#    #+#              ;
-;    Updated: 2018/05/19 15:53:24 by agrumbac         ###   ########.fr        ;
+;    Updated: 2018/05/21 22:21:30 by agrumbac         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -45,8 +45,15 @@ _write_syscall:
 	mov rax, MACH_SYSCALL(WRITE)
 	syscall
 
+	push rax
+	sub rsp, 8
+
 	mov rdi, 10
 	call _ft_putchar
+
+	add rsp, 8
+	pop rax
+	inc rax
 
 	leave
 	ret
