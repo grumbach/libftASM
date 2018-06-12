@@ -6,7 +6,7 @@
 ;    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/05/18 11:20:25 by agrumbac          #+#    #+#              ;
-;    Updated: 2018/05/19 16:27:35 by agrumbac         ###   ########.fr        ;
+;    Updated: 2018/06/12 16:58:58 by agrumbac         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -37,10 +37,13 @@ _ft_memalloc:
 	add rsp, 8                     ;remove padding
 	pop rsi
 	mov rdi, rax
+	push rax
+	sub rsp, 8                     ;16bit align
 
 	call _ft_bzero
 
-	mov rax, rdi                   ;return dest
+	add rsp, 8                     ;remove padding
+	pop rax
 
 	leave
 	ret

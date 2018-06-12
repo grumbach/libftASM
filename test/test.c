@@ -6,32 +6,30 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 17:50:29 by agrumbac          #+#    #+#             */
-/*   Updated: 2018/06/12 16:33:58 by agrumbac         ###   ########.fr       */
+/*   Updated: 2018/06/12 16:57:07 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-// #define __FT_strdup
-// #define __FT_strcat
-// #define __FT_memcpy
-// #define __FT_memset
-// #define __FT_bzero
-// #define __FT_tolower
-// #define __FT_toupper
-// #define __FT_strlen
-// #define __FT_isalnum
-// #define __FT_isalpha
-// #define __FT_isascii
-// #define __FT_isdigit
-// #define __FT_isprint
-// #define __FT_putchar
-// #define __FT_puts
-// #define __FT_cat
-// #define __FT_strncmp
-// #define __FT_strchr
-// #define __FT_atoll
-// #define __FT_atoi
+#define __FT_strdup
+#define __FT_strcat
+#define __FT_memcpy
+#define __FT_memset
+#define __FT_bzero
+#define __FT_tolower
+#define __FT_toupper
+#define __FT_strlen
+#define __FT_isalnum
+#define __FT_isalpha
+#define __FT_isascii
+#define __FT_isdigit
+#define __FT_isprint
+#define __FT_putchar
+#define __FT_puts
+#define __FT_cat
+#define __FT_strncmp
+#define __FT_strchr
+#define __FT_atoll
+#define __FT_atoi
 
 
 
@@ -197,7 +195,7 @@ printf("ft_memalloc\n");
 	dup = ft_memalloc(0);
 	printf("  ft_memalloc(0) should be NULL -> %p\n", dup);
 	dup = ft_memalloc(7);
-	printf("  return address %p\n", dup);
+	printf("  ft_memalloc(7)  return address %p\n", dup);
 	printf("  ft_memalloc(7) -> [%c][%c][%c][%c][%c][%c][%c]\n", dup[0], dup[1], dup[2], dup[3], dup[4], dup[5], dup[6]);
 	free(dup);
 // ft_strncpy
