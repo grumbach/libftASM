@@ -6,7 +6,7 @@
 ;    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/05/18 05:29:05 by agrumbac          #+#    #+#              ;
-;    Updated: 2018/05/18 07:17:25 by agrumbac         ###   ########.fr        ;
+;    Updated: 2018/06/12 00:12:58 by agrumbac         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -17,16 +17,18 @@ _ft_strlen:
 	push rbp
 	mov rbp, rsp
 
-	mov rcx, rdi
+	xor al, al
+	xor rcx, rcx
 
-	jmp _loop
-_do:
-	inc rcx
-_loop:
-	cmp BYTE [rcx], 0
-	jnz _do
+	not rcx
 
-	sub rcx, rdi
+	cld
+
+	repnz scasb
+
+	not rcx
+	dec rcx
+
 	mov rax, rcx
 
 	leave

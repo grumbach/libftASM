@@ -71,6 +71,7 @@ instruction destination_operand, source_operand, last_operand
 |```jump```|Loads the ```destination operand``` in ```rip```, the ```destination operand``` specifies the address of the instruction being jumped to. This operand can be an immediate value, a general-purpose register, or a memory location|
 |```and``` |Performs the following operation: ```destination operand = destination operand & source operand``` and sets some flags|
 |```test```|Is basically an ```and``` instruction that does not alter the ```destination operand```|
+|```rep```|Repeat String Operations : repeats a string instruction the number of times specified in the count register. ```rep``` (repeat), ```repe``` (repeat while equal), ```repne``` (repeat while not equal), ```repz``` (repeat while zero), and ```repnz``` (repeat while not zero)|
 
 ### Pointer Directives
 
@@ -113,7 +114,7 @@ The kernel interface uses ```rdi```, ```rsi```, ```rdx```, ```r10```, ```r8``` a
 * A value in the range between ```-4095``` and ```-1``` indicates an **error**, it is ```-errno```.
 * Only values of class INTEGER or class MEMORY are passed to the kernel.
 
-## Want More ?
+## Useful links
 
 * About [Calling conventions](https://stackoverflow.com/questions/2535989/what-are-the-calling-conventions-for-unix-linux-system-calls-on-i386-and-x86-6)
 * Or the [System V ABI](https://wiki.osdev.org/System_V_ABI)

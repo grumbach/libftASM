@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 22:01:48 by agrumbac          #+#    #+#             */
-/*   Updated: 2018/05/21 22:31:01 by agrumbac         ###   ########.fr       */
+/*   Updated: 2018/06/12 15:59:02 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char				*ft_strdup(const char *s);
 char				*ft_strcat(char *restrict s1, const char *restrict s2);
 void				*ft_memcpy(void *restrict dst, const void *restrict src, \
 						size_t n);
-void				ft_memset(void *a, int c, size_t len);
+void				*ft_memset(void *a, int c, size_t len);
 void				ft_bzero(void *a, size_t len);
 int					ft_toupper(int a);
 int					ft_tolower(int a);
