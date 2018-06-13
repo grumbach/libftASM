@@ -6,10 +6,14 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 17:50:29 by agrumbac          #+#    #+#             */
-/*   Updated: 2018/06/12 16:57:07 by agrumbac         ###   ########.fr       */
+/*   Updated: 2018/06/13 21:24:42 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+#define __FT_strncpy
+#define __FT_putstr
+#define __FT_memalloc
 #define __FT_strdup
 #define __FT_strcat
 #define __FT_memcpy
@@ -32,7 +36,6 @@
 #define __FT_atoi
 
 
-
 #include "libfts.h"
 
 char *a = "qwertyuiopasdfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigyfghjklzxcvbnmufqyew iufew fpqueiwh ewpqiufh ewqoifugeqw ofiugweq foiequwg fqewoiufg qweofiuweqg wkug reifugrw orweiufg reowifugrwe ofiuegrw fiuewgf qweoigy42";
@@ -46,8 +49,48 @@ char *me_strcat[3] = {"", "123", " it works!!"};
 int					main(void)
 {
 	x[99] = 0;
+	ft_memset(cato, 42, 42);
 	cato[0] = 0;
 
+
+#ifdef __FT_strncpy
+printf("ft_strncpy\n");
+// ft_strncpy
+char *titi = ft_memalloc(100);
+    ft_memset(titi, 'a', 5);
+printf("ft_strncpy\n");
+    ft_strncpy(titi, "hey-man", 7);
+	printf("  ft_strncpy(titi, \"hey-man\", 7) -> [%c][%c][%c][%c][%c][%c][%c]\n", titi[0], titi[1], titi[2], titi[3], titi[4], titi[5], titi[6]);
+    ft_strncpy(titi, "hey", 6);
+    printf("  ft_strncpy(titi, \"hey\", 6) -> [%c][%c][%c][%c][%c][%c][%c]\n", titi[0], titi[1], titi[2], titi[3], titi[4], titi[5], titi[6]);
+    ft_strncpy(titi, "", 7);
+    printf("  ft_strncpy(titi, \"\", 7) -> [%c][%c][%c][%c][%c][%c][%c]\n", titi[0], titi[1], titi[2], titi[3], titi[4], titi[5], titi[6]);
+    ft_strncpy(titi, "hey", 2);
+    printf("  ft_strncpy(titi, \"hey\", 2) -> [%c][%c][%c][%c][%c][%c][%c]\n", titi[0], titi[1], titi[2], titi[3], titi[4], titi[5], titi[6]);
+    ft_strncpy(titi, "shit", 0);
+    printf("  ft_strncpy(titi, \"shit\", 0) -> [%c][%c][%c][%c][%c][%c][%c]\n", titi[0], titi[1], titi[2], titi[3], titi[4], titi[5], titi[6]);
+    ft_strncpy(titi, "hellow", 47);
+    printf("  ft_strncpy(titi, \"hellow\", 47) -> [%c][%c][%c][%c][%c][%c][%c]\n", titi[0], titi[1], titi[2], titi[3], titi[4], titi[5], titi[6]);
+    ft_strncpy(titi, "Yaa", 1);
+    printf("  ft_strncpy(titi, \"Yaa\", 1) -> [%c][%c][%c][%c][%c][%c][%c]\n", titi[0], titi[1], titi[2], titi[3], titi[4], titi[5], titi[6]);
+    free(titi);
+#endif
+#ifdef __FT_putstr
+printf("ft_putstr\n");
+	ft_putstr("");
+	ft_putstr("  hello I work!\n");
+#endif
+#ifdef __FT_memalloc
+printf("ft_memalloc\n");
+// ft_memalloc
+printf("ft_memalloc\n");
+	char *memalloc_dup = ft_memalloc(0);
+	printf("  ft_memalloc(0) should be NULL -> %p\n", memalloc_dup);
+	memalloc_dup = ft_memalloc(7);
+	printf("  ft_memalloc(7)  return address %p\n", memalloc_dup);
+	printf("  ft_memalloc(7) -> [%c][%c][%c][%c][%c][%c][%c]\n", memalloc_dup[0], memalloc_dup[1], memalloc_dup[2], memalloc_dup[3], memalloc_dup[4], memalloc_dup[5], memalloc_dup[6]);
+	free(memalloc_dup);
+#endif
 #ifdef __FT_strdup
 printf("ft_strdup\n");
 	char *dup;
@@ -60,12 +103,14 @@ printf("ft_strdup\n");
 #endif
 #ifdef __FT_strcat
 printf("ft_strcat\n");
-	ft_strcat(cato, me_strcat[0]);
-	printf("  ft_strcat(cato, me_strcat[0]) -> cato [%c][%c][%c][%c][%c][%c][%c]\n", cato[0], cato[1], cato[2], cato[3], cato[4], cato[5], cato[6]);
-	ft_strcat(cato, me_strcat[1]);
-	printf("  ft_strcat(cato, me_strcat[1]) -> cato [%c][%c][%c][%c][%c][%c][%c]\n", cato[0], cato[1], cato[2], cato[3], cato[4], cato[5], cato[6]);
-	ft_strcat(cato, me_strcat[2]);
-	printf("  ft_strcat(cato, me_strcat[2]) -> cato {%s}\n", cato);
+	printf("  ft_strcat(\"%s\", \"%s\") ", cato, me_strcat[0]);
+	printf(" -> %s\n", ft_strcat(cato, me_strcat[0]));
+	printf("  ft_strcat(\"%s\", \"%s\") ", cato, me_strcat[1]);
+	printf(" -> %s\n", ft_strcat(cato, me_strcat[1]));
+	printf("  ft_strcat(\"%s\", \"%s\") ", cato, me_strcat[2]);
+	printf(" -> %s\n", ft_strcat(cato, me_strcat[2]));
+	printf("  ft_strcat(\"%s\", \"%s\") ", cato, me_strcat[0]);
+	printf(" -> %s\n", ft_strcat(cato, me_strcat[0]));
 #endif
 #ifdef __FT_memcpy
 printf("ft_memcpy\n");
@@ -190,33 +235,6 @@ printf("ft_cat =============test/test.c=============\n");
 	ft_cat(fd);
 	close(fd);
 printf("ft_cat =============test/test.c=============\n");
-// ft_memalloc
-printf("ft_memalloc\n");
-	dup = ft_memalloc(0);
-	printf("  ft_memalloc(0) should be NULL -> %p\n", dup);
-	dup = ft_memalloc(7);
-	printf("  ft_memalloc(7)  return address %p\n", dup);
-	printf("  ft_memalloc(7) -> [%c][%c][%c][%c][%c][%c][%c]\n", dup[0], dup[1], dup[2], dup[3], dup[4], dup[5], dup[6]);
-	free(dup);
-// ft_strncpy
-char *titi = ft_memalloc(100);
-    ft_memset(titi, 'a', 5);
-printf("ft_strncpy\n");
-    ft_strncpy(titi, "hey-man", 7);
-	printf("  ft_strncpy(titi, \"hey-man\", 7) -> [%c][%c][%c][%c][%c][%c][%c]\n", titi[0], titi[1], titi[2], titi[3], titi[4], titi[5], titi[6]);
-    ft_strncpy(titi, "hey", 6);
-    printf("  ft_strncpy(titi, \"hey\", 6) -> [%c][%c][%c][%c][%c][%c][%c]\n", titi[0], titi[1], titi[2], titi[3], titi[4], titi[5], titi[6]);
-    ft_strncpy(titi, "", 7);
-    printf("  ft_strncpy(titi, \"\", 7) -> [%c][%c][%c][%c][%c][%c][%c]\n", titi[0], titi[1], titi[2], titi[3], titi[4], titi[5], titi[6]);
-    ft_strncpy(titi, "hey", 2);
-    printf("  ft_strncpy(titi, \"hey\", 2) -> [%c][%c][%c][%c][%c][%c][%c]\n", titi[0], titi[1], titi[2], titi[3], titi[4], titi[5], titi[6]);
-    ft_strncpy(titi, "shit", 0);
-    printf("  ft_strncpy(titi, \"shit\", 0) -> [%c][%c][%c][%c][%c][%c][%c]\n", titi[0], titi[1], titi[2], titi[3], titi[4], titi[5], titi[6]);
-    ft_strncpy(titi, "hellow", 47);
-    printf("  ft_strncpy(titi, \"hellow\", 47) -> [%c][%c][%c][%c][%c][%c][%c]\n", titi[0], titi[1], titi[2], titi[3], titi[4], titi[5], titi[6]);
-    ft_strncpy(titi, "Yaa", 1);
-    printf("  ft_strncpy(titi, \"Yaa\", 1) -> [%c][%c][%c][%c][%c][%c][%c]\n", titi[0], titi[1], titi[2], titi[3], titi[4], titi[5], titi[6]);
-    free(titi);
 #endif
 #ifdef __FT_strncmp
 printf("ft_strncmp\n");

@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 22:01:48 by agrumbac          #+#    #+#             */
-/*   Updated: 2018/06/12 15:59:02 by agrumbac         ###   ########.fr       */
+/*   Updated: 2018/06/13 21:24:21 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ int					ft_isalnum(int a);
 int					ft_isprint(int a);
 void				ft_putchar(char c);
 int					ft_puts(char *s);
+int					ft_putstr(char *s);
 
 #endif

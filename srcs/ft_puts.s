@@ -6,7 +6,7 @@
 ;    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/05/18 05:23:30 by agrumbac          #+#    #+#              ;
-;    Updated: 2018/05/21 22:21:30 by agrumbac         ###   ########.fr        ;
+;    Updated: 2018/06/12 18:52:42 by agrumbac         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -33,12 +33,17 @@ _ft_puts:
 	push rbp
 	mov rbp, rsp
 
-	and rdi, rdi
+	test rdi, rdi
 	jz _null_case
+
+	push rdi
+	sub rsp, 8
 
 	call _ft_strlen
 	mov rdx, rax
-	mov rsi, rdi
+
+	add rsp, 8
+	pop rsi
 
 _write_syscall:
 	mov rdi, STDOUT

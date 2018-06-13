@@ -6,7 +6,7 @@
 ;    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/05/18 07:06:16 by agrumbac          #+#    #+#              ;
-;    Updated: 2018/05/19 16:41:38 by agrumbac         ###   ########.fr        ;
+;    Updated: 2018/06/13 14:38:32 by agrumbac         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -20,17 +20,20 @@ _ft_strdup:
 	push rbp
 	mov rbp, rsp
 
+	push rdi                ;source
+	sub rsp, 8              ;align
+
 	call _ft_strlen
 
+	add rsp, 8              ;remove padding
 	inc rax
-	push rax
-	push rdi
+	push rax                ;len
 
 	mov rdi, rax
 	call _malloc
 
-	pop rsi                 ;source
 	pop rdx                 ;len
+	pop rsi                 ;source
 
 	test rax, rax           ;test malloc return
 	jz _return
