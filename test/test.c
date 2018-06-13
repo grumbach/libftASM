@@ -6,10 +6,9 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 17:50:29 by agrumbac          #+#    #+#             */
-/*   Updated: 2018/06/13 21:24:42 by agrumbac         ###   ########.fr       */
+/*   Updated: 2018/06/13 23:21:55 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #define __FT_strncpy
 #define __FT_putstr
@@ -34,7 +33,6 @@
 #define __FT_strchr
 #define __FT_atoll
 #define __FT_atoi
-
 
 #include "libfts.h"
 
@@ -248,14 +246,14 @@ printf("ft_strncmp\n");
 #endif
 #ifdef __FT_strchr
 printf("ft_strchr\n");
-    char *du = ft_strchr("halla", 'a');
-    printf("%p\n", du);
-    printf("  ft_strchr alla -> [%s]\n", du);
-    printf("  ft_strchr 0 -> [%s]\n", ft_strchr("hello", 'a'));
-    printf("  ft_strchr '' -> [%s]\n", ft_strchr("hello", 0));
-    printf("  ft_strchr 0 -> [%s]\n", ft_strchr("", 'a'));
-    printf("  ft_strchr '' -> [%s]\n", ft_strchr("", 0));
-    printf("  ft_strchr good day! -> [%s]\n", ft_strchr("hello my man! good day!", 'g'));
+	char *chrs = "hello";
+	char chrc = 'w';
+    printf("  ft_strchr(\"halla\", 'a') -> [%s]\n", ft_strchr("halla", 'a'));
+    printf("  ft_strchr(\"hello\", 'a') -> [%s]\n", ft_strchr("hello", 'a'));
+    printf("  ft_strchr(\"hello\", 0) -> [%s]\n", ft_strchr("hello", 0));
+    printf("  ft_strchr(\"\", 'a') -> [%s]\n", ft_strchr("", 'a'));
+    printf("  ft_strchr(\"%s\"<%p>, %c) -> [%p]\n", chrs, chrs, chrc, ft_strchr(chrs, chrc));
+    printf("  ft_strchr(\"hello my man! good day!\", 'g') -> [%s]\n", ft_strchr("hello my man! good day!", 'g'));
 #endif
 #ifdef __FT_atoll
 printf("ft_atoll\n");

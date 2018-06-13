@@ -2,41 +2,6 @@
 
 Writing a lib in x86 assembly (intel flavour)
 
-```js
-;//APP (Asm Pre Processor) macros
-%define MACH_SYSCALL(n)    0x2000000 | n
-%define WRITE              4
-%define STDOUT             1
-
-;//data
-section .data
-hello:
-	.string db "Hello world!", 10
-	.len equ $ - hello.string
-
-;//text symbols
-section .text
-	global start
-	global _main
-
-;//nasm entry point
-start:
-	call _main                    ;//backup instruction pointer RIP jump to _main
-	ret
-
-;//default entry point
-_main:
-	push rbp                      ;//backup stack frame base pointer RBP
-	mov rbp, rsp                  ;//stack end pointer RSP
-	sub rsp, 16                   ;//grow the stack towards lower addresses
-	mov rdi, STDOUT               ;//passing parameters to the WRITE syscall...
-	lea rsi, [rel hello.string]
-	mov rdx, hello.len
-	mov rax, MACH_SYSCALL(WRITE)  ;//RAX holds the syscall number
-	syscall
-	leave                         ;//set RSP to RBP, then pop RBP (pushed above)
-	ret                           ;//pop RIP (pushed above in call)
-```
 ## X86 Assembly
 
 ### General Purpose Registers
